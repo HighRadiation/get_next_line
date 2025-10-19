@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: boksuz <boksuz@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,38 +12,13 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if ((char)c == '\0')
-		return ((char *)s);
-	return (NULL);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	len1;
-	size_t	len2;
-	char	*joined;
-	size_t	i;
-	size_t	j;
+	size_t len1;
+	size_t len2;
+	char *joined;
+	size_t i;
+	size_t j;
 
 	if (!s1 && !s2)
 		return (NULL);
@@ -63,33 +38,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (++j < len2)
 		joined[i + j] = s2[j];
 	return (joined);
-}
-
-char	*ft_strdup(const char *str)
-{
-	char	*str1;
-	size_t	len;
-	size_t	i;
-
-	len = ft_strlen(str);
-	str1 = ft_calloc(len + 1, sizeof(char));
-	if ((str1) == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		str1[i] = str[i];
-		i++;
-	}
-	return (str1);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-
-	ptr = malloc(count * size);
-	if (ptr)
-		ft_bzero(ptr, count * size);
-	return (ptr);
 }
