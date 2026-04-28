@@ -2,7 +2,7 @@
 
 A modular implementation of get_next_line function that reads a line from a file descriptor.
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 get_next_line/
@@ -33,7 +33,7 @@ get_next_line/
 └── README.md
 ```
 
-## 🔨 Building
+##  Building
 
 ### Mandatory version (single file descriptor):
 ```bash
@@ -52,7 +52,7 @@ make fclean   # Remove object files and executables
 make re       # Rebuild from scratch
 ```
 
-## 📝 Modular Design
+##  Modular Design
 
 Each function is in its own file for:
 - **Better organization**: Easy to find and maintain
@@ -67,7 +67,7 @@ Each function is in its own file for:
 - **Memory utilities** (`src/utils/memory/`): Memory allocation and initialization
 - **Bonus** (`src/core/bonus/`): Multi-FD support version
 
-## 💡 Usage Example
+##  Usage Example
 
 ```c
 #include "get_next_line.h"
@@ -90,7 +90,7 @@ int main(void)
 }
 ```
 
-## ⚙️ Configuration
+##  Configuration
 
 Change `BUFFER_SIZE` during compilation:
 ```bash
