@@ -1,38 +1,6 @@
-```markdown
 # get_next_line
 
 A modular implementation of `get_next_line`, a function that reads a file line by line from a file descriptor.
-
-## Project Structure
-
-```
-get_next_line/
-├── include/
-│   ├── get_next_line.h
-│   └── get_next_line_bonus.h
-├── src/
-│   ├── core/
-│   │   ├── get_next_line.c
-│   │   ├── gnl_read.c
-│   │   ├── gnl_get_line.c
-│   │   ├── gnl_trim_stash.c
-│   │   └── bonus/
-│   │       ├── get_next_line_bonus.c
-│   │       ├── gnl_read_bonus.c
-│   │       ├── gnl_get_line_bonus.c
-│   │       └── gnl_trim_stash_bonus.c
-│   └── utils/
-│       ├── string/
-│       │   ├── ft_strlen.c
-│       │   ├── ft_strchr.c
-│       │   ├── ft_strjoin.c
-│       │   └── ft_strdup.c
-│       └── memory/
-│           ├── ft_calloc.c
-│           └── ft_bzero.c
-├── Makefile
-└── README.md
-```
 
 ## Build
 
@@ -106,4 +74,3 @@ gcc -D BUFFER_SIZE=42 ...
 ```
 
 Default: 61 bytes (set in the header files).
-```
