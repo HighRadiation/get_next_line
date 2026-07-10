@@ -1,73 +1,73 @@
 # get_next_line
 
-A modular implementation of get_next_line function that reads a line from a file descriptor.
+A modular implementation of `get_next_line`, a function that reads a file line by line from a file descriptor.
 
-##  Project Structure
+## Project Structure
 
-```
 get_next_line/
-├── include/                  # Header files
+├── include/
 │   ├── get_next_line.h
 │   └── get_next_line_bonus.h
-├── src/                      # Source files (modular structure)
-│   ├── core/                 # Core functionality
+├── src/
+│   ├── core/
 │   │   ├── get_next_line.c
 │   │   ├── gnl_read.c
 │   │   ├── gnl_get_line.c
 │   │   ├── gnl_trim_stash.c
-│   │   └── bonus/            # Bonus version (multiple FD support)
+│   │   └── bonus/
 │   │       ├── get_next_line_bonus.c
 │   │       ├── gnl_read_bonus.c
 │   │       ├── gnl_get_line_bonus.c
 │   │       └── gnl_trim_stash_bonus.c
-│   └── utils/                # Utility functions
-│       ├── string/           # String manipulation
+│   └── utils/
+│       ├── string/
 │       │   ├── ft_strlen.c
 │       │   ├── ft_strchr.c
 │       │   ├── ft_strjoin.c
 │       │   └── ft_strdup.c
-│       └── memory/           # Memory management
+│       └── memory/
 │           ├── ft_calloc.c
 │           └── ft_bzero.c
 ├── Makefile
 └── README.md
-```
 
-##  Building
+## Build
 
-### Mandatory version (single file descriptor):
+**Mandatory version** (single file descriptor):
 ```bash
 make
 ```
 
-### Bonus version (multiple file descriptors):
+**Bonus version** (multiple file descriptors):
 ```bash
 make bonus
 ```
 
-### Clean build files:
+**Cleanup:**
 ```bash
-make clean    # Remove object files
-make fclean   # Remove object files and executables
-make re       # Rebuild from scratch
+make clean    # remove object files
+make fclean   # remove object files and executables
+make re       # rebuild from scratch
 ```
 
-##  Modular Design
+## Design
 
-Each function is in its own file for:
-- **Better organization**: Easy to find and maintain
-- **Clear responsibility**: One function per file
-- **Logical grouping**: Functions grouped by purpose (core, string utils, memory utils)
-- **Easy testing**: Individual functions can be tested separately
+Each function lives in its own file:
 
-### Function Organization:
+| Aspect | Benefit |
+|---|---|
+| Organization | Easy to locate and maintain |
+| Responsibility | One function per file |
+| Grouping | Files grouped by purpose |
+| Testing | Functions testable in isolation |
 
-- **Core functions** (`src/core/`): Main get_next_line logic
-- **String utilities** (`src/utils/string/`): String manipulation helpers
-- **Memory utilities** (`src/utils/memory/`): Memory allocation and initialization
-- **Bonus** (`src/core/bonus/`): Multi-FD support version
+**Layout:**
+- `src/core/` — main `get_next_line` logic
+- `src/utils/string/` — string manipulation helpers
+- `src/utils/memory/` — memory allocation helpers
+- `src/core/bonus/` — multi-FD support
 
-##  Usage Example
+## Usage
 
 ```c
 #include "get_next_line.h"
@@ -76,26 +76,25 @@ Each function is in its own file for:
 
 int main(void)
 {
-    int fd;
-    char *line;
+	int		fd;
+	char	*line;
 
-    fd = open("test.txt", O_RDONLY);
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("%s", line);
-        free(line);
-    }
-    close(fd);
-    return (0);
+	fd = open("test.txt", O_RDONLY);
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close(fd);
+	return (0);
 }
 ```
 
-##  Configuration
+## Configuration
 
-Change `BUFFER_SIZE` during compilation:
+Override `BUFFER_SIZE` at compile time:
 ```bash
 gcc -D BUFFER_SIZE=42 ...
 ```
 
-Default is 61 bytes (defined in header files).
-
+Default: 61 bytes (set in the header files).
